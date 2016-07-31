@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+    <div class="alert alert-danger">
+      <strong>Please, enter english text or text that can be deciphered in grammatically correct english</strong>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="description">
+            <h1>Caesar Cipher</h1>
+            <p>
+                This tool allows you to encode a text with Caesar cipher algorithm,
+                which also known as a shift cipher. It is a substitution cipher where each letter in the original text
+                is replaced with a letter corresponding to a certain number of letters up or down in the alphabet.
+            </p>
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if form.errors %}
+            {% for errors in form.errors %}
+                {{ errors }}
+            {% endfor %}
+        {% endif %}
+        <button type="submit" class="btn" id="postButton">
+            encrypt
+            <span class="glyphicon glyphicon-sort-by-alphabet"></span> /
+            decrypt
+            <span class="glyphicon glyphicon-sort-by-alphabet-alt"></span>
+        </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
